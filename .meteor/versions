@@ -19,6 +19,7 @@ blaze@2.1.2
 blaze-tools@1.0.3
 boilerplate-generator@1.0.3
 callback-hook@1.0.3
+cb-theme@0.1.0
 ccan:cssreset@1.0.0
 cfs:http-methods@0.0.27
 check@1.0.5
@@ -153,6 +154,6 @@ underscore@1.0.3
 url@1.0.4
 useraccounts:core@1.8.1
 useraccounts:unstyled@1.8.1
-utilities:avatar@0.7.9
+utilities:avatar@0.7.8
 webapp@1.2.0
 webapp-hashing@1.0.3
