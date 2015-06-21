@@ -15,8 +15,10 @@ Settings.schema = new SimpleSchema({
   siteUrl: {
     type: String,
     optional: true,
+    // regEx: SimpleSchema.RegEx.Url,
     autoform: {
       group: "01_general",
+      type: "bootstrap-url",
       instructions: 'Your site\'s URL (with trailing "/"). Will default to Meteor.absoluteUrl()'
     }
   },
@@ -348,6 +350,15 @@ Settings.schema = new SimpleSchema({
     autoform: {
       group: 'extras',
       instructions: 'Any extra HTML code you want to include on every page.',
+      rows: 5
+    }
+  },
+  extraCSS: {
+    type: String,
+    optional: true,
+    autoform: {
+      group: 'extras',
+      instructions: 'Any extra CSS you want to include on every page.',
       rows: 5
     }
   },

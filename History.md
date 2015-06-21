@@ -1,3 +1,23 @@
+## v0.20.6 “AutoScope”
+
+* Add Extra CSS field (thanks @johnthepink!)
+* Fix security issue with Settings (thanks @jshimko!)
+* Add automatic template replacement
+
+## v0.20.5 “MinorScope”
+
+Just a couple minor bug fixes.
+
+* Changed how email template customization works (see [documentation](http://docs.telescopeapp.org/v0.20/docs/custom-templates#email-templates)).
+* Ensure email uniqueness and keep it in sync.
+* Improve profile completion screen validation & errors.
+* Generate public user properties list from schema.
+* Fixed video lightbox issue.
+* Updated Getting Started content.
+* Enforcing better URL formatting for Site URL setting.
+* Fixed notification settings.
+* Reworked user settings.
+
 ## v0.20.4 “RefactorScope”
 
 See [blog](http://telescopeapp.org/blog/telescope-v020-refactorscope/) for more details. 

@@ -1,7 +1,7 @@
 Package.describe({
   name: "telescope:core",
   summary: "Telescope core package",
-  version: "0.20.4",
+  version: "0.20.6",
   git: "https://github.com/TelescopeJS/Telescope.git"
 });
 
@@ -10,14 +10,14 @@ Package.onUse(function(api) {
   api.versionsFrom("METEOR@1.0");
   
   var packages = [
-    'telescope:lib@0.20.4', //  no dependencies
-    'telescope:messages@0.20.4', // lib
-    'telescope:i18n@0.20.4', // lib
-    'telescope:events@0.20.4', // lib, i18n
-    'telescope:settings@0.20.4', // lib, i18n
-    'telescope:users@0.20.4', // lib, i18n, settings
-    'telescope:comments@0.20.4', // lib, i18n, settings, users
-    'telescope:posts@0.20.4' // lib, i18n, settings, users, comments
+    'telescope:lib@0.20.6', //  no dependencies
+    'telescope:messages@0.20.6', // lib
+    'telescope:i18n@0.20.6', // lib
+    'telescope:events@0.20.6', // lib, i18n
+    'telescope:settings@0.20.6', // lib, i18n
+    'telescope:users@0.20.6', // lib, i18n, settings
+    'telescope:comments@0.20.6', // lib, i18n, settings, users
+    'telescope:posts@0.20.6' // lib, i18n, settings, users, comments
   ];
 
   api.use(packages);
@@ -79,27 +79,11 @@ Package.onUse(function(api) {
 
   // static assets; needs cleanup
 
-  // api.addFiles([
-  //   'public/img/bg-black.png',
-  //   'public/img/bg-black@2x.png',
-  //   'public/img/bg-header.png',
-  //   'public/img/bg-header@2x.png',
-  //   'public/img/bg.png',
-  //   'public/img/bg@2x.png',
-  //   'public/img/default-avatar.png',
-  //   'public/img/favicon.ico',
-  //   'public/img/loading-balls.svg',
-  //   'public/img/loading.gif',
-  //   'public/img/loading.svg',
-  //   'public/img/logo.png',
-  //   'public/img/logo@2x.png',
-  //   'public/img/minus.svg',
-  //   'public/img/plus.svg',
-  //   'public/img/telescope-logo.png',
-  //   'public/img/telescope-logo2.png',
-  //   'public/img/telescope-logo@2x.png',
-  //   'public/img/thegrid.svg'
-  // ], 'client');
+  api.addFiles([
+    'public/img/default-avatar.png',
+    'public/img/loading-balls.svg',
+    'public/img/loading.svg',
+  ], 'client');
 
   api.addFiles([
     'lib/server/start.js'

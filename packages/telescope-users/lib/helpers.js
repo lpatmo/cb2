@@ -124,6 +124,48 @@ Users.userProfileComplete = function (user) {
 Users.helpers({userProfileComplete: function () {return Users.userProfileComplete(this);}});
 Users.userProfileCompleteById = function (userId) {return Users.userProfileComplete(Meteor.users.findOne(userId));};
 
+/**
+ * Get a user setting
+ * @param {Object} user
+ * @param {String} settingName
+ * @param {Object} defaultValue
+ */
+Users.getSetting = function (user, settingName, defaultValue) {
+  user = user || Meteor.user();
+  defaultValue = defaultValue || null;
+
+  // all settings should be in the user.telescope namespace, so add "telescope." if needed
+  settingName = settingName.slice(0,10) === "telescope." ? settingName : "telescope." + settingName;
+
+  if (user.telescope) {
+    var settingValue = this.getProperty(user, settingName);
+    return (settingValue === null) ? defaultValue : settingValue;
+  } else {
+    return defaultValue;
+  }
+};
+Users.helpers({getSetting: function (settingName, defaultValue) {return Users.getSetting(this, settingName, defaultValue);}});
+
+/**
+ * Set a user setting
+ * @param {Object} user
+ * @param {String} settingName
+ * @param {Object} defaultValue
+ */
+Users.setSetting = function (user, settingName, value) {
+  if (user) {
+    
+    // all settings should be in the user.telescope namespace, so add "telescope." if needed
+    var field = settingName.slice(0,10) === "telescope." ? settingName : "telescope." + settingName;
+
+    var modifier = {$set: {}};
+    modifier.$set[field] = value;
+    Users.update(user._id, modifier);
+
+  }
+};
+Users.helpers({setSetting: function () {return Users.setSetting(this);}});
+
 ///////////////////
 // Other Helpers //
 ///////////////////
@@ -150,43 +192,6 @@ Users.numberOfItemsInPast24Hours = function (user, collection) {
   });
   return items.count();
 };
-
-Users.getUserSetting = function (settingName, defaultValue, user) {
-  user = user || Meteor.user();
-  defaultValue = defaultValue || null;
-  if (user.telescope && user.telescope.settings) {
-    var settingValue = this.getProperty(user.telescope.settings, settingName);
-    return (settingValue === null) ? defaultValue : settingValue;
-  } else {
-    return defaultValue;
-  }
-};
-
-Users.setUserSetting = function (settingName, value, userArgument) {
-  // note: for some very weird reason, doesn't work when called from Accounts.onCreateUser
-
-  var user;
-
-  if(Meteor.isClient){
-    user = (typeof userArgument === "undefined") ? Meteor.user() : userArgument; // on client, default to current user
-  }else if (Meteor.isServer){
-    user = userArgument; // on server, use argument
-  }
-  if(!user)
-    throw new Meteor.Error(500, 'User not defined');
-
-  Meteor.call('setUserSetting', settingName, value, user);
-};
-
-Meteor.methods({
-  setUserSetting: function (settingName, value, user) {
-    // console.log('Setting user setting "' + setting + '" to "' + value + '" for ' + Users.getUserName(user));
-    var field = 'telescope.settings.'+settingName;
-    var modifier = {$set: {}};
-    modifier.$set[field] = value;
-    Meteor.users.update(user._id, modifier);
-  }
-});
 
 Users.getProperty = function (object, property) {
   // recursive function to get nested properties
@@ -260,8 +265,8 @@ Users.getCurrentUserEmail = function () {
 };
 
 Users.findByEmail = function (email) {
-  return Meteor.users.findOne({"emails.address": email});
-}
+  return Meteor.users.findOne({"telescope.email": email});
+};
 
 
 /**
