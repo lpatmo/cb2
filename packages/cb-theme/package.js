@@ -15,7 +15,9 @@ Package.onUse(function (api) {
   // i18n config (must come first)
 
   api.addFiles([
-    'package-tap.i18n'
+    'package-tap.i18n',
+    'i18n/en.i18n.json',
+    'lib/routes.js'
   ], ['client', 'server']);
 
   // client & server
@@ -34,7 +36,9 @@ Package.onUse(function (api) {
     'lib/client/templates/custom_post_title.html',
     'lib/client/templates/custom_post_title.js',
     'lib/client/stylesheets/custom.scss',
-    'lib/client/custom_templates.js'
+    'lib/client/custom_templates.js',
+    'lib/client/templates/about_link.html',
+    'lib/client/templates/about.html'
   ], ['client']);
 
   // server
