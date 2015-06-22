@@ -11,6 +11,7 @@ The goal of this platform is to help users schedule google hangouts more easily 
 - add in a start date and end date to the Posts schema
 - add in hangout links to form
 - change upvoting/downvoting to say "I want to join!" and "launch hangout"
+- fix {{usercount}} by adding the appropriate Session.set and Session.get calls.
 
 
 
