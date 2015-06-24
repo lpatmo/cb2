@@ -8,3 +8,5 @@ Telescope.modules.add("primaryNav", {
 	  template: "about_link",
 	  order: 100
 });
+
+Telescope.modules.removeAll("postsListTop");
