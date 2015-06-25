@@ -26,9 +26,10 @@ Meteor.startup(function () {
     }
   });
 
-  Template.post_upvote.helpers.events({
-    'click .upvote-link': function(e, instance){
+  Template.post_upvote.events({
+    'click .upvotlink': function(e, instance){
       var post = this;
+      alert('clicked');
 
       Meteor.call('upvotePost', post, function(error, result){
         trackEvent("post upvoted", {'_id': post._id});
