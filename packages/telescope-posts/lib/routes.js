@@ -115,7 +115,7 @@ Posts.controllers.page = RouteController.extend({
 
   template: 'post_page',
 
-  waitOn: function() {
+  waitOn: function () {
     this.postSubscription = coreSubscriptions.subscribe('singlePost', this.params._id);
     this.postUsersSubscription = coreSubscriptions.subscribe('postUsers', this.params._id);
     this.commentSubscription = coreSubscriptions.subscribe('commentsList', {view: 'postComments', postId: this.params._id});
@@ -131,11 +131,9 @@ Posts.controllers.page = RouteController.extend({
   },
 
   onBeforeAction: function () {
-    if (! this.post()) {
+    if (!this.post()) {
       if (this.postSubscription.ready()) {
         this.render('not_found');
-      } else {
-        this.render('loading');
       }
     } else {
       this.next();
@@ -205,21 +203,6 @@ Meteor.startup(function () {
     controller: Posts.controllers.scheduled
   });
 
-  // Post Page
-
-  Router.route('/posts/:_id/:slug?', {
-    name: 'post_page',
-    controller: Posts.controllers.page
-  });
-
-  Router.route('/posts/:_id/comment/:commentId', {
-    name: 'post_page_comment',
-    controller: Posts.controllers.page,
-    onAfterAction: function () {
-      // TODO: scroll to comment position
-    }
-  });
-
   // Post Edit
 
   Router.route('/posts/:_id/edit', {
@@ -238,6 +221,21 @@ Meteor.startup(function () {
       };
     },
     fastRender: true
+  });
+
+  // Post Page
+
+  Router.route('/posts/:_id/:slug?', {
+    name: 'post_page',
+    controller: Posts.controllers.page
+  });
+
+  Router.route('/posts/:_id/comment/:commentId', {
+    name: 'post_page_comment',
+    controller: Posts.controllers.page,
+    onAfterAction: function () {
+      // TODO: scroll to comment position
+    }
   });
 
   // Post Submit
