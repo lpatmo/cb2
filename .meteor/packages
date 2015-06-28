@@ -41,3 +41,9 @@ telescope:update-prompt
 ############ Your Custom Packages ############
 
 # my-custom-package
+cb-theme
+#tsega:bootstrap3-datetimepicker@=3.1.3_3
+#rajit:bootstrap3-datepicker
+#twbs:bootstrap
+#mrt:moment-timezone
+#aldeed:autoform-bs-datetimepicker

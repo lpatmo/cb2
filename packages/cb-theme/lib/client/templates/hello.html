@@ -1,0 +1,39 @@
+<template name="hello">
+  <!--<h2 class="custom-hero-banner">Hello {{name}}!</h2>-->
+
+	<div class="bg-image">
+  <h3 id="blurb"> Peer-to-peer organized Google Hangouts for studying together, silent project co-working, and pair programming.</h3>
+  <h3 class="subtitle">We're {{userCount}} beginners and experts who help each other by sharing knowledge. <a href="/about" class="more-info">(Learn More)</a></h3>
+  <!--<p class="subtitle"><a href="/about" class="more-info">[About Us]</a></p>-->
+  <!--<p class="subtitle">We're a community of <span class="user-count"><a href="/leaders">{{userCount}}</a> "running partners" helping each other learn faster</span>. </p>-->
+<a href="//codebuddiesmeet.herokuapp.com" target="_blank" class="chatroom large-button"><i class="fa fa-users"></i> Join the Slack chat (new!)</a>
+<a href="/submit" class="submit large-button"><i class="fa fa-calendar"></i> Host a Hangout</a>
+  <!--  <div class="herotext grid grid-module">
+  
+    <p>We meet on pre-set Google Hangout rooms, turn off the video <img src="http://codebuddies.org/images/icon-video-off.png" alt="turn off video" width="25" height="25"/>, mute the audio as well if the session is tagged as a <a href="http://hangouts.codebuddies.org/category/silent-hangout" class="post-category example category-silent-hangout">silent hangout</a>, screenshare <img src="http://codebuddies.org/images/icon-screenshare.png" alt="screenshare" width="25"/>, and help each other master the topic or tutorial proposed.</p>
+    <p>In non-"silent" hangouts, we'll still use audio to talk through code or demo personal projects.</p>
+    <p>Silent hangouts are more like coffeeshop study meetups, where we'll work at our own pace on the topic proposed and help each other without worrying about microphone or headphone issues.
+    </p>
+    <p>CodeBuddies is free, a safe space, makes learning to code <em>much</em> more fun, and is <a href="http://github.com/lpatmo/cb" target="_blank">open-sourced</a>. People of all skill levels join, and <a href="/submit">ANYONE can schedule a study meetup</a> ("silent" or otherwise) on any tutoral or topic. <a href="/about">Read the FAQ</a> for more information!</p>
+  </div>-->
+
+		 {{#if hasCategories}}
+      <div class="hero-tabs">
+      <!--  <ul role="menu" aria-labelledby="dLabel" class="hero-menu">
+        	<li><a href="/" class="post-category" id="tab-all">All study group categories</a></li>
+          {{#each categories}}
+            <li>
+              <a href="{{categoryLink}}" class="post-category">
+                {{name}}
+              </a>
+            </li>
+          {{/each}}
+        </ul>-->
+
+
+      </div>
+  		{{/if}}
+  
+	</div>
+
+</template>
