@@ -40,7 +40,8 @@ Package.onUse(function (api) {
     'lib/client/templates/about_link.html',
     'lib/client/templates/about.html',
     'lib/client/templates/custom_post_upvote.html',
-    'lib/client/templates/custom_post_upvote.js'
+    'lib/client/templates/custom_post_upvote.js',
+    'lib/client/templates/custom_post_content.html'
   ], ['client']);
 
   // server
