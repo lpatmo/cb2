@@ -120,7 +120,6 @@ telescope:core@0.20.6
 telescope:daily@0.20.6
 telescope:datetimepicker@0.20.6
 telescope:email@0.20.6
-telescope:embedly@0.20.6
 telescope:events@0.20.6
 telescope:getting-started@0.20.6
 telescope:i18n@0.20.6

@@ -11,6 +11,21 @@
 
 // Custom Comment Field
 
+Posts.removeField('url');
+Posts.removeField('title');
+Posts.removeField('body');
+
+Posts.addField({
+  fieldName: "title",
+  fieldSchema: {
+    type: String,
+    optional: false,
+    editableBy: ["member", "admin"]
+  }
+});
+
+
+
 //Add scheduledFor and scheduledEnd
 Posts.addField({
   fieldName: "scheduledFor",
@@ -20,7 +35,8 @@ Posts.addField({
     label: "Hangout start time",
     editableBy: ["member", "admin"],
     autoform: {
-      type: "bootstrap-datetimepicker"
+      type: "bootstrap-datetimepicker",
+      class: 'start-time'
     }
   }
 });
@@ -33,15 +49,29 @@ Posts.addField({
     label: "Hangout end time",
     editableBy: ["member", "admin"],
     autoform: {
-      type: "bootstrap-datetimepicker"
+      type: "bootstrap-datetimepicker",
+       afFormGroup: {
+                'formgroup-class': 'end-time-wrapper'
+            }
     }
   }
 });
 
+Posts.addField({
+    fieldName: "body",
+    fieldSchema: {
+      type: String,
+      optional: true,
+      editableBy: ["member", "admin"],
+      autoform: {
+        rows: 5
+      }
+    }
+});
 
-Posts.removeField('url');
-Posts.removeField('title');
-Posts.removeField('body');
+
+
+
 
 Posts.addField({
   fieldName: 'url',

@@ -41,7 +41,8 @@ Package.onUse(function (api) {
     'lib/client/templates/about.html',
     'lib/client/templates/custom_post_vote.html',
     'lib/client/templates/custom_post_vote.js',
-    'lib/client/templates/custom_post_content.html'
+    'lib/client/templates/custom_post_content.html',
+    'lib/client/templates/custom_autoform-postthumbnail.html'
   ], ['client']);
 
   // server

@@ -31,7 +31,7 @@
   "new_posts": "New Posts",
 
   // Settings Schema
-  "title": "Title",
+  "title": "Hangout Topic",
   "description": "Description",
   "siteUrl": "Site URL",
   "tagline": "Tagline",
@@ -97,8 +97,8 @@
   "createdAt": "Created At",
   "postedAt": "Posted At",
   "url": "URL",
-  "title": "Title",
-  "body": "Body",
+  "title": "Hangout Title",
+  "body": "Hangout Goals",
   "htmlBody": "HTML Body",
   "viewCount": "View Count",
   "commentCount": "Recommendation Count",
@@ -153,11 +153,11 @@
 
   // Post submit & edit
   "created": "Created",
-  "title": "Title",
+  "title": "Hangout Topic",
   "suggest_title": "Suggest title",
   "url": "URL",
   "short_url": "Short URL",
-  "body": "Body",
+  "body": "Goals",
   "category": "Category",
   "inactive_": "Inactive?",
   "sticky_": "Sticky?",
