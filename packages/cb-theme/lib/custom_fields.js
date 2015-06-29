@@ -40,6 +40,8 @@ Posts.addField({
 
 
 Posts.removeField('url');
+Posts.removeField('title');
+Posts.removeField('body');
 
 Posts.addField({
   fieldName: 'url',
@@ -69,14 +71,14 @@ Posts.addField({
   }
 });
 
-Comments.addField({
-  fieldName: 'customCommentField',
-  fieldSchema: {
-    type: String,
-    optional: true,
-    editableBy: ["member", "admin"]
-  }
-});
+// Comments.addField({
+//   fieldName: 'customCommentField',
+//   fieldSchema: {
+//     type: String,
+//     optional: true,
+//     editableBy: ["member", "admin"]
+//   }
+// });
 
 // Custom User Field
 

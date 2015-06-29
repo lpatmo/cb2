@@ -39,8 +39,8 @@ Package.onUse(function (api) {
     'lib/client/custom_templates.js',
     'lib/client/templates/about_link.html',
     'lib/client/templates/about.html',
-    'lib/client/templates/custom_post_upvote.html',
-    'lib/client/templates/custom_post_upvote.js',
+    'lib/client/templates/custom_post_vote.html',
+    'lib/client/templates/custom_post_vote.js',
     'lib/client/templates/custom_post_content.html'
   ], ['client']);
 
