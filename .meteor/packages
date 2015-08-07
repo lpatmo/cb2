@@ -47,3 +47,9 @@ cb-theme
 #twbs:bootstrap
 #mrt:moment-timezone
 #aldeed:autoform-bs-datetimepicker
+telescope:debug
+constellation:console
+constellation:subscriptions
+constellation:autopublish
+constellation:session
+babrahams:temple

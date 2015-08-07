@@ -118,6 +118,7 @@ ul.hero-menu {
 	}
 }
 
+a.menu-top-level { padding-left: 20px;}
 
 
 .hero-tabs .schedule { 
@@ -315,11 +316,18 @@ input, textarea {
 .menu-accordion .menu-contents { max-height: 150px !important;}
 
 /*Herotext*/
-.large-button { @extend %regular-button; font-size: 1.5em; display: block; width: 100%; box-shadow: none; margin-bottom: 5px;}
+.large-button { @extend %regular-button; font-size: 1.5em; display: block; width: 100%; box-shadow: none; margin-bottom: 5px; color: white !important;}
 a.chatroom { background: #E01563; color: #fff; &:hover {background: rgba(224,21,99, 0.8); };}
 a.chatroom:visited { color: #fff;}
 
 /*About page*/
 .template-aboutPage a:link { color: dodgerblue;}
+
+.zone-wrapper { margin: 0 auto; max-width: 1200px; padding: 10px;}
+
+/*Hidden*/
+.posts-views-nav { display: none;} /*need to figure out debug mode*/
+
+
 
 

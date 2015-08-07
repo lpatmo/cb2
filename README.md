@@ -5,13 +5,17 @@ Project platform for codebuddies.org. Forked from Telescope. Open-sourced.
 The goal of this platform is to help users schedule google hangouts more easily to learn to code together.
 
 ##TODO - refactoring 
-- Create the FAQ/About page
-- Create the new hero section 
 - Integrate Slava's Pull Request that hoists "in progress" hangouts to the top of the page (https://github.com/lpatmo/cb/pull/54)
-- add in a start date and end date to the Posts schema
-- add in hangout links to form
+- Fix order on hangout submission form
 - change upvoting/downvoting to say "I want to join!" and "launch hangout"
-- fix {{usercount}} by adding the appropriate Session.set and Session.get calls.
+
+
+##COMPLETED TODOS
+- Create the FAQ/About page (DONE)
+- Create the new hero section (DONE)
+- fix {{usercount}} by adding the appropriate Session.set and Session.get calls. (DONE)
+- add in a start date and end date to the Posts schema (DONE)
+- add in hangout links to form (DONE)
 
 
 

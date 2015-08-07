@@ -10,3 +10,4 @@ Telescope.modules.add("primaryNav", {
 });
 
 Telescope.modules.removeAll("postsListTop");
+Telescope.modules.removeAll("postsViewsNav");

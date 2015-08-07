@@ -46,7 +46,8 @@ Package.onUse(function (api) {
   // server
 
   api.addFiles([
-    'lib/server/templates/custom_emailPostItem.handlebars'
+    'lib/server/templates/custom_emailPostItem.handlebars',
+    'lib/server/usercount.js'
   ], ['server']);
 
   // i18n languages (must come last)
