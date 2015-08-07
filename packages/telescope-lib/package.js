@@ -1,7 +1,7 @@
 Package.describe({
   name: 'telescope:lib',
   summary: 'Telescope libraries.',
-  version: '0.20.6',
+  version: '0.22.2',
   git: "https://github.com/TelescopeJS/Telescope.git"
 });
 
@@ -17,6 +17,8 @@ Package.onUse(function (api) {
     'accounts-password',
     'accounts-twitter',
     'accounts-facebook',
+    'check',
+    // 'audit-argument-checks',
     'reactive-var',
     'http',
     'email',
@@ -34,7 +36,7 @@ Package.onUse(function (api) {
     'matb33:collection-hooks@0.7.11',
     'chuangbo:marked@0.3.5',
     'meteorhacks:fast-render@2.3.2',
-    'meteorhacks:subs-manager@1.3.0',
+    'meteorhacks:subs-manager@1.4.0',
     'percolatestudio:synced-cron@1.1.0',
     'useraccounts:unstyled@1.8.1',
     'manuelschoebel:ms-seo@0.4.1',
@@ -42,7 +44,7 @@ Package.onUse(function (api) {
     'momentjs:moment@2.10.3',
     'sacha:spin@0.2.4',
     'aslagle:reactive-table@0.7.3',
-    'utilities:avatar@0.7.11',
+    'utilities:avatar@0.7.12',
     'fortawesome:fontawesome@4.3.0',
     'ccan:cssreset@1.0.0',
     'djedi:sanitize-html@1.6.1',
@@ -50,7 +52,8 @@ Package.onUse(function (api) {
     'jparker:gravatar@0.3.1',
     'sanjo:meteor-files-helpers@1.1.0_4',
     'cmather:handlebars-server@0.2.0',
-    'chuangbo:cookie@1.1.0'
+    'chuangbo:cookie@1.1.0',
+    'ongoworks:speakingurl@5.0.1'
   ];
 
   api.use(packages);

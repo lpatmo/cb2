@@ -52,6 +52,9 @@ Posts.submit = function (post) {
   // clean up post title
   post.title = Telescope.utils.cleanUp(post.title);
 
+  // generate slug
+  post.slug = Telescope.utils.slugify(post.title);
+
   // ------------------------------ Callbacks ------------------------------ //
 
   // run all post submit server callbacks on post object successively
@@ -63,7 +66,8 @@ Posts.submit = function (post) {
 
   // --------------------- Server-Side Async Callbacks --------------------- //
 
-  Telescope.callbacks.runAsync("postSubmitAsync", post);
+  // note: query for post to get fresh document with collection-hooks effects applied
+  Telescope.callbacks.runAsync("postSubmitAsync", Posts.findOne(post._id));
 
   return post;
 };
@@ -79,7 +83,6 @@ Posts.edit = function (postId, modifier, post) {
   if (typeof post === "undefined") {
     post = Posts.findOne(postId);
   }
-
 
   // ------------------------------ Callbacks ------------------------------ //
 
@@ -112,6 +115,8 @@ Meteor.methods({
    * @param {Object} post - the post being inserted
    */
   submitPost: function(post){
+
+    check(post, Posts.simpleSchema());
 
     // required properties:
     // title
@@ -191,6 +196,10 @@ Meteor.methods({
    */
   editPost: function (modifier, postId) {
 
+    // checking might be redundant because SimpleSchema already enforces the schema, but you never know
+    check(modifier, Match.OneOf({$set: Posts.simpleSchema()}, {$unset: Object}, {$set: Posts.simpleSchema(), $unset: Object}));
+    check(postId, String);
+
     var user = Meteor.user(),
         post = Posts.findOne(postId),
         schema = Posts.simpleSchema()._schema;
@@ -222,6 +231,11 @@ Meteor.methods({
 
   setPostedAt: function(post, customPostedAt){
 
+    // this method is not actually used?
+
+    check(post, Posts.simpleSchema());
+    check(customPostedAt, Date);
+
     var postedAt = new Date(); // default to current date and time
 
     if(Users.is.admin(Meteor.user()) && typeof customPostedAt !== 'undefined') // if user is admin and a custom datetime has been set
@@ -230,7 +244,11 @@ Meteor.methods({
     Posts.update(post._id, {$set: {postedAt: postedAt}});
   },
 
-  approvePost: function(post){
+  approvePost: function(postId){
+
+    check(postId, String);
+    var post = Posts.findOne(postId);
+
     if(Users.is.admin(Meteor.user())){
       var set = {status: 2};
 
@@ -238,7 +256,7 @@ Meteor.methods({
       if (!post.postedAt)
         set.postedAt = new Date();
 
-      Posts.update(post._id, {$set: set}, {validate: false});
+      Posts.update(post._id, {$set: set});
 
       Telescope.callbacks.runAsync("postApprovedAsync", post);
 
@@ -247,7 +265,11 @@ Meteor.methods({
     }
   },
 
-  unapprovePost: function(post){
+  unapprovePost: function(postId){
+
+    check(postId, String);
+    var post = Posts.findOne(postId);
+    
     if(Users.is.admin(Meteor.user())){
       Posts.update(post._id, {$set: {status: 1}});
     }else{
@@ -256,6 +278,10 @@ Meteor.methods({
   },
 
   increasePostViews: function(postId, sessionId){
+
+    check(postId, String);
+    check(sessionId, String);
+
     this.unblock();
 
     // only let users increment a post's view counter once per session
@@ -268,6 +294,9 @@ Meteor.methods({
   },
 
   deletePostById: function(postId) {
+
+    check(postId, String);
+
     // remove post comments
     // if(!this.isSimulation) {
     //   Comments.remove({post: postId});

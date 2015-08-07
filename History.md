@@ -1,8 +1,55 @@
+## v0.22.2
+
+* Made `approvePost` and `unapprovePost` methods take `postId` instead of `post` as argument and fixed approve/unapprove bug. 
+* Now sorting email newsletter posts by `baseScore` (time-independent), not `score`.
+
+## v0.22.1 “DebugScope”
+
+* Introduced new [template debug mode](http://docs.telescopeapp.org/docs/debug-mode).
+* Fixed invites bugs (thanks @badibouteraa!).
+* Made hero modules full width (thanks @jshimko!).
+* Renamed `nav` template to `header`.
+* Renamed `postsListTop` zone to `top`.
+* Renamed `footer` template to `footer_code`, which is part of the `footer` module zone. 
+* Any template can now be used as menu label in menu component.
+* Added `Telescope.menuItems.removeAll()`
+* Number of columns in Hubble grid layout now adapts to viewport width.
+* Added image support to RSS feed and API.
+* Added setting for pointing RSS feed to discussion pages.
+* Made video lightbox responsive and made video stop on lightbox close.
+* Simplified template modules markup structure.
+* Fixed bug preventing non-logged-in users from signing up to newsletter (thanks @frabrunelle!).
+* Moved errors and banners styles to base theme.
+* Updated Kadira package.
+* Implemented post-specific SEO logic for generating Open Graph and Twitter meta tags.
+
+## v0.21.2 “FastScope”
+
+* Added day by day settings for newsletter frequency (thanks @johnthepink!).
+* Implemented Subs Manager.
+* Implemented FastRender.
+* Now using `check` for methods. 
+
+## v0.21.1 “SlugScope”
+
+* Added URL slugs for posts (i.e. `/posts/xyz/my-post-slug`).
+* i18n files clean-up.
+* Added post downvote setting.
+* Renamed `post_upvote` template to `post_vote`.
+* Refactored notifications code.
+* Added `kadira-debug` package.
+* Fixed avatar bug.
+* Fixed screen refresh bug on post page.
+* Fixed security issue (thanks @delgermurun).
+* Fixed security issue (thanks @pcorey).
+* Added Swedish translation (thanks @Alekzanther).
+* Improved French translation (thanks @camilleroux).
+
 ## v0.20.6 “AutoScope”
 
-* Add Extra CSS field (thanks @johnthepink!)
-* Fix security issue with Settings (thanks @jshimko!)
-* Add automatic template replacement
+* Added Extra CSS field (thanks @johnthepink!).
+* Fixed security issue with Settings (thanks @jshimko!).
+* Added automatic template replacement.
 
 ## v0.20.5 “MinorScope”
 

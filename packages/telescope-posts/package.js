@@ -1,7 +1,7 @@
 Package.describe({
   name: "telescope:posts",
   summary: "Telescope posts package",
-  version: "0.20.6",
+  version: "0.22.2",
   git: "https://github.com/TelescopeJS/telescope-posts.git"
 });
 
@@ -10,11 +10,11 @@ Package.onUse(function (api) {
   api.versionsFrom(['METEOR@1.0']);
 
   api.use([
-    'telescope:lib@0.20.6',
-    'telescope:i18n@0.20.6',
-    'telescope:settings@0.20.6',
-    'telescope:users@0.20.6',
-    'telescope:comments@0.20.6'
+    'telescope:lib@0.22.2',
+    'telescope:i18n@0.22.2',
+    'telescope:settings@0.22.2',
+    'telescope:users@0.22.2',
+    'telescope:comments@0.22.2'
   ]);
 
   api.addFiles([
@@ -53,8 +53,8 @@ Package.onUse(function (api) {
     'lib/client/templates/modules/post_rank.js',
     'lib/client/templates/modules/post_title.html',
     'lib/client/templates/modules/post_title.js',
-    'lib/client/templates/modules/post_upvote.html',
-    'lib/client/templates/modules/post_upvote.js',
+    'lib/client/templates/modules/post_vote.html',
+    'lib/client/templates/modules/post_vote.js',
     'lib/client/templates/post_body.html',
     'lib/client/templates/post_edit.html',
     'lib/client/templates/post_edit.js',
@@ -76,8 +76,29 @@ Package.onUse(function (api) {
   ], ['client']);
 
   api.addFiles([
-    'lib/server/publications.js'
+    'lib/server/publications.js',
+    'lib/server/fastrender.js'
   ], ['server']);
+
+  api.addFiles([
+    "i18n/ar.i18n.json",
+    "i18n/bg.i18n.json",
+    "i18n/de.i18n.json",
+    "i18n/el.i18n.json",
+    "i18n/en.i18n.json",
+    "i18n/es.i18n.json",
+    "i18n/fr.i18n.json",
+    "i18n/it.i18n.json",
+    "i18n/nl.i18n.json",
+    "i18n/pl.i18n.json",
+    "i18n/pt-BR.i18n.json",
+    "i18n/ro.i18n.json",
+    "i18n/ru.i18n.json",
+    "i18n/sv.i18n.json",
+    "i18n/tr.i18n.json",
+    "i18n/vi.i18n.json",
+    "i18n/zh-CN.i18n.json"
+  ], ["client", "server"]);
 
   api.export('Posts');
 

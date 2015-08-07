@@ -35,6 +35,7 @@ Posts.schema = new SimpleSchema({
   url: {
     type: String,
     optional: true,
+    max: 500,
     editableBy: ["member", "admin"],
     autoform: {
       type: "bootstrap-url"
@@ -46,7 +47,15 @@ Posts.schema = new SimpleSchema({
   title: {
     type: String,
     optional: false,
+    max: 500,
     editableBy: ["member", "admin"]
+  },
+  /**
+    Slug
+  */
+  slug: {
+    type: String,
+    optional: true
   },
   /**
     Post body (markdown)
@@ -54,6 +63,7 @@ Posts.schema = new SimpleSchema({
   body: {
     type: String,
     optional: true,
+    max: 3000,
     editableBy: ["member", "admin"],
     autoform: {
       rows: 5
@@ -199,6 +209,7 @@ Posts.schema = new SimpleSchema({
   userId: {
     type: String,
     optional: true,
+    // regEx: SimpleSchema.RegEx.Id,
     editableBy: ["admin"],
     autoform: {
       group: 'admin',
@@ -227,25 +238,3 @@ Posts.allow({
   remove: _.partial(Telescope.allowCheck, Posts)
 });
 
-//////////////////////////////////////////////////////
-// Collection Hooks                                 //
-// https://atmospherejs.com/matb33/collection-hooks //
-//////////////////////////////////////////////////////
-
-/**
- * Generate HTML body from Markdown on post insert
- */
-Posts.before.insert(function (userId, doc) {
-  if(!!doc.body)
-    doc.htmlBody = Telescope.utils.sanitize(marked(doc.body));
-});
-
-/**
- * Generate HTML body from Markdown when post body is updated
- */
-Posts.before.update(function (userId, doc, fieldNames, modifier) {
-  // if body is being modified, update htmlBody too
-  if (Meteor.isServer && modifier.$set && modifier.$set.body) {
-    modifier.$set.htmlBody = Telescope.utils.sanitize(marked(modifier.$set.body));
-  }
-});

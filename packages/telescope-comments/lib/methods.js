@@ -39,10 +39,11 @@ Comments.submit = function (comment) {
   // --------------------- Server-side Async Callbacks --------------------- //
 
   // run all post submit server callbacks on comment object successively
-  Telescope.callbacks.runAsync("commentSubmitAsync", comment);
+  // note: query for comment to get fresh document with collection-hooks effects applied
+  Telescope.callbacks.runAsync("commentSubmitAsync", Comments.findOne(comment._id));
 
   return comment;
-}
+};
 
 Comments.edit = function (commentId, modifier, comment) {
 
@@ -68,6 +69,9 @@ Comments.edit = function (commentId, modifier, comment) {
 
 Meteor.methods({
   submitComment: function(comment){
+
+    // checking might be redundant because SimpleSchema already enforces the schema, but you never know
+    check(comment, Comments.simpleSchema());
 
     // required properties:
     // postId
@@ -124,6 +128,10 @@ Meteor.methods({
 
   editComment: function (modifier, commentId) {
 
+    // checking might be redundant because SimpleSchema already enforces the schema, but you never know
+    check(modifier, {$set: Comments.simpleSchema()});
+    check(commentId, String);
+
     var user = Meteor.user(),
         comment = Comments.findOne(commentId),
         schema = Comments.simpleSchema()._schema;
@@ -154,6 +162,8 @@ Meteor.methods({
 
   deleteCommentById: function (commentId) {
 
+    check(commentId, String);
+    
     var comment = Comments.findOne(commentId);
     var user = Meteor.user();
 

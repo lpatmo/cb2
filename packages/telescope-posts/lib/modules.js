@@ -1,5 +1,5 @@
 
-Telescope.modules.add("postsListTop", {
+Telescope.modules.add("top", {
   template: 'posts_views_nav',
   order: 99
 });
@@ -10,7 +10,7 @@ Telescope.modules.add("postComponents", [
     order: 1
   },
   {
-    template: 'post_upvote',
+    template: 'post_vote',
     order: 10
   },
   {
